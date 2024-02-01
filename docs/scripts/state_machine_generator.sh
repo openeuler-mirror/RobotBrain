@@ -1,0 +1,1 @@
+dot -Tpng ../resources/dots/nxc100_state_machine.dot -o ../resources/images/nxc100_state_machine.png

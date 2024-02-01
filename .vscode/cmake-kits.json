@@ -1,0 +1,10 @@
+[
+  {
+    "name": "GCC/G++-10 with env",
+    "environmentSetupScript": "${workspaceFolder}/envsetup.sh",
+    "compilers": {
+      "C": "/usr/bin/gcc-10",
+      "CXX": "/usr/bin/g++-10"
+    }
+  }
+]

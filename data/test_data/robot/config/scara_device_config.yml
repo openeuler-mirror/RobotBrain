@@ -1,0 +1,65 @@
+scara_device_config:
+  robot:
+    dof: 5        # 手臂自由度-关节数量
+    flip_num: 0   # 翻转机构的数量
+    slave_num: 8  # 伺服数量
+    slave_type_list:   # (0: motor_slave) (1: io_slave) (2: di_slave) (3: do_slave)
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 1
+      - 2
+      - 3
+    IO_slave_seq: 5
+    Elevation_slave_seq: 0
+    Rotation_slave_seq: 1
+    Extension_L_slave_seq: 2
+    Extension_R_slave_seq: 3
+    JogSpeed: 45
+    joints:
+      Z-axis:
+        vel_max: 300
+        acc_max: 1500
+        jerk: 7500
+        MotionRangeStart: -20
+        MotionRangeEnd: 355
+        encoder: 8388608
+        ratio: 1.793103448
+        jog_step_max: 100
+        z_io_seq: 0
+      T-axis:
+        vel_max: 257
+        acc_max: 1200
+        jerk: 6000
+        MotionRangeStart: -330
+        MotionRangeEnd: 330
+        encoder: 8388608
+        ratio: 86.2745098
+        jog_step_max: 100
+      R-axis:
+        vel_max: 257
+        acc_max: 1200
+        jerk: 6000
+        MotionRangeStart: -800
+        MotionRangeEnd: 800
+        encoder: 8388608
+        ratio: 50.0
+        jog_speed_ratio: 0.01
+        jog_step_max: 100
+      W-axis:
+        vel_max: 257
+        acc_max: 7000
+        jerk: 14000
+        MotionRangeStart: -360
+        MotionRangeEnd: 360
+        encoder: 8388608
+        ratio: 29.45
+        jog_speed_ratio: 0.01
+        jog_step_max: 100
+      linear-motion:
+        vel_max: 1100
+        acc_max: 7000
+        jerk: 10000
+        jog_speed_max: 100

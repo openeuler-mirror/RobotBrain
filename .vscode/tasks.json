@@ -1,0 +1,44 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "command": "./bootstrap",
+            "label": "bootstrap all",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "编译整个项目",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "bootstrap test",
+            "command": "./bootstrap",
+            "args": [
+                "test"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "编译并测试项目"
+        },
+        
+        {
+            "type": "shell",
+            "label": "bootstrap test and output detail",
+            "command": "./bootstrap",
+            "args": [
+                "test -d"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "编译并测试项目，输出详细测试信息"
+        }
+    ],
+    "version": "2.0.0"
+}

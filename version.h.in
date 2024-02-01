@@ -1,0 +1,33 @@
+/**
+ * @file version.h
+ * @author QingfengLi (liqingfengzzu@163.com)
+ * @brief robot_brain库的版本配置相关头文件
+ * @details version.h为库编译时相关的版本控制，该文件为自动生成文件，不要手动编辑，如有需要，可以对应的version.h.in文件
+ * @version 0.1
+ * @date 2023-05-27
+ *
+ * @copyright Copyright (c) 2021 ROSC
+ *
+ */
+#ifndef ROBOT_BRAIN_VERSION_H_
+#define ROBOT_BRAIN_VERSION_H_
+
+// 版本相关内容
+#define VERSION_MAJOR @VERSION_MAJOR@
+#define VERSION_MINOR @VERSION_MINOR@
+#define VERSION_PATCH @VERSION_PATCH@
+
+#define BUILD_TIMESTAMP "@BUILD_TIMESTAMP@"
+#define GIT_BRANCH "@GIT_BRANCH@"
+#define GIT_HASH "@GIT_HASH@"
+
+namespace rosc
+{
+  /**
+   * @brief 在日志中输出版本信息
+   * 
+   */
+  void LogVersion();
+}
+
+#endif  // ROBOT_BRAIN_VERSION_H_

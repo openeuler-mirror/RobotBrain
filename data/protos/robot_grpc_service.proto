@@ -1,0 +1,559 @@
+syntax = "proto3";
+package rosc;
+import "google/protobuf/empty.proto";
+
+message PingResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message PowerOnResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message PowerOffResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message ClearErrorResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message EmergencyStopRequest {
+  string message = 1;
+  int32 code = 2;
+}
+message EmergencyStopResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message EmergencyRecoverRequest {
+  string message = 1;
+  int32 code = 2;
+}
+message EmergencyRecoverResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+enum GRPCAxisNum {
+  ELEVATION = 0;
+  ROTATION = 1;
+  EXTENSION_L = 2;
+  EXTENSION_R = 3;
+  EXTENSION = 4;
+  WRIST_L = 5;
+  WRIST_R = 6;
+  CARTESIAN_X_L = 7;
+  CARTESIAN_X_R = 8;
+  CARTESIAN_Y_L = 9;
+  CARTESIAN_Y_R = 10;
+  FLIP_L = 11;
+  FLIP_R = 12;
+}
+
+message TeachMoveStepRequest {
+  GRPCAxisNum axis = 1;  ///< 指定轴
+  int32 direction = 2;   ///< 指定方向
+  double jog_step = 3;   ///< 指定
+}
+
+message TeachMoveStepResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message TeachJogStartRequest {
+  string message = 1;
+  int32 code = 2;
+  int32 axis = 3;
+  int32 direction = 4;
+  double jog_step = 5;
+}
+message TeachJogStartResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message TeachJogStopRequest {
+  string message = 1;
+  int32 code = 2;
+}
+message TeachJogStopResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message TeachStreamStartGetJointsResponse {
+  string reply = 1;
+  int32 code = 2;
+  repeated double joints = 3;
+  string servo_state = 4;
+  repeated double left_arm = 5;
+  repeated double right_arm = 6;
+  repeated double velocitys = 7;
+  repeated double a = 8;
+  repeated double b = 9;
+  repeated double c = 10;
+  repeated double d = 11;
+  int32 solenoid_r1 = 12;
+  int32 solenoid_r2 = 13;
+}
+
+message TeachStreamStopGetJointsResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message TeachSavePositionRequest {
+  string message = 1;
+  int32 code = 2;
+  string name = 3;
+  string describe = 4;
+  string arm = 5;
+  int32 slot = 6;
+  int32 has_mid = 7;
+}
+message TeachSavePositionResponse {
+  string reply = 1;
+  int32 code = 2;
+  repeated double joints = 3;
+}
+
+message TeachSetVelocityRequest {
+  string message = 1;
+  int32 code = 2;
+  int32 velocity = 3;
+}
+message TeachSetVelocityResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message TeachGetVelocityRequest {
+  string message = 1;
+  int32 code = 2;
+}
+
+message TeachGetVelocityResponse {
+  string reply = 1;
+  int32 code = 2;
+  int32 velocity = 3;
+}
+
+message TeachMoveRequest {
+  string message = 1;
+  int32 code = 2;
+  string name = 3;
+}
+
+message TeachMoveResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message SetIOOutputStateRequest {
+  string message = 1;
+  int32 code = 2;
+  int32 serial = 3;
+  bool state = 4;
+}
+
+message SetIOOutputStateResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message GetIOOutputStateRequest {
+  string message = 1;
+  int32 code = 2;
+}
+
+message GetIOOutputStateResponse {
+  string reply = 1;
+  int32 code = 2;
+  repeated bool states = 3;
+}
+
+message GetIOInputStateRequest {
+  string message = 1;
+  int32 code = 2;
+}
+
+message GetIOInputStateResponse {
+  string reply = 1;
+  int32 code = 2;
+  repeated bool states = 3;
+}
+
+message StopGetIOInputStateRequest {
+  string message = 1;
+  int32 code = 2;
+}
+
+message StopGetIOInputStateResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message DeletePointRequest {
+  string message = 1;
+  int32 code = 2;
+  string name = 3;
+}
+
+message DeletePointResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message GetAllPointNamesRequest {
+  string message = 1;
+  int32 code = 2;
+}
+
+message GetAllPointNamesResponse {
+  string message = 1;
+  int32 code = 2;
+  repeated string point_names = 3;
+}
+
+message DownloadPointFileRequest {
+  string message = 1;
+  int32 code = 2;
+}
+
+message DownloadPointFileResponse {
+  string reply = 1;
+  int32 code = 2;
+  bytes data = 3;
+}
+
+message MoveToTeachPositionRequest {
+  string message = 1;
+  int32 code = 2;
+  string name = 3;
+}
+
+message MoveToTeachPositionResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message GoTeachJointRequest {
+  string message = 1;
+  int32 code = 2;
+  string point_name = 3;
+}
+
+message GoTeachJointResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message GetStreamExceptionRequest {
+  string message = 1;
+  int32 code = 2;
+}
+
+message GetStreamExceptionResponse {
+  string reply = 1;
+  int32 code = 2;
+  string status_code = 3;
+  int32 level = 4;
+  string time = 5;
+  string message = 6;
+}
+
+message GetExceptionRequest {}
+
+message GetExceptionResponse {
+  repeated string status_code = 1;
+  repeated int32 level = 2;
+  repeated string time = 3;
+  repeated string message = 4;
+}
+
+message DeleteExceptionRequest {}
+
+message DeleteExceptionResponse {}
+
+message DeviceSetting {
+  int32 dof = 1;
+  int32 IO = 2;
+  double speed = 3;
+}
+
+message JointSetting {
+  repeated string joint_name = 1;
+  repeated double vel_max = 2;
+  repeated double acc_max = 3;
+  repeated double jerk = 4;
+  repeated double MotionRangeStart = 5;
+  repeated double MotionRangeEnd = 6;
+  repeated double dcc_max = 7;
+  repeated double dcc_jerk = 8;
+}
+
+message SaveJointSettingItem {
+  string axis_name = 1;
+  string attribute = 2;
+  double value = 3;
+}
+
+message SaveJointSettingRequest {
+  repeated SaveJointSettingItem data = 1;
+  string message = 2;
+  int32 code = 3;
+}
+
+message SaveJointSettingResponse {
+  string reply = 2;
+  int32 code = 3;
+}
+
+message RobotSettingRequest {
+  string message = 1;
+  int32 code = 2;
+  string setting_type = 3;
+}
+
+message RobotSettingResponse {
+  string reply = 1;
+  int32 code = 2;
+  string setting_type = 3;
+  JointSetting joint_setting = 4;
+  DeviceSetting device_setting = 5;
+}
+
+message TeachInstructionRequest {
+  string message = 1;
+  int32 code = 2;
+  string op_type = 3;
+  int32 speed = 4;
+  string start_point = 5;
+  string mid_point = 6;
+  string end_point = 7;
+  int32 sleep_time = 8;
+  string arm = 9;
+  string fixBlade = 10;
+}
+
+message TeachInstructionResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message SlaveStateRequest {
+  string message = 1;
+  int32 code = 2;
+}
+
+message SlaveStateResponse {
+  string reply = 1;
+  int32 code = 2;
+  repeated double torque = 3;
+  repeated double velocity = 4;
+  repeated string error_code = 5;
+}
+
+message LoadPort {
+  double x = 1;
+  double y = 2;
+  double angle = 3;
+  string type = 4;
+}
+
+message StartLayoutSimulationRequest {
+  string message = 1;
+  int32 code = 2;
+  repeated LoadPort pos_list = 3;
+}
+
+message StartLayoutSimulationResponse {
+  string reply = 1;
+  int32 code = 2;
+  bool access = 3;
+}
+
+message GetLayoutRobotPositionRequest {
+  string message = 1;
+  int32 code = 2;
+}
+
+message GetLayoutRobotPositionResponse {
+  string reply = 1;
+  int32 code = 2;
+  repeated double position = 3;
+}
+
+message StopGetLayoutRobotPositionRequest {
+  string message = 1;
+  int32 code = 2;
+}
+
+message StopGetLayoutRobotPositionResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message SingleAxisZeroCalibrateRequest { int32 axis = 1; }
+
+message SingleAxisZeroCalibrateResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message SpeedConfig {
+  string attribute = 1;
+  double value = 2;
+}
+message GetSpeedConfigRequest {
+  string speed_type = 1;
+  string speed_level = 2;
+  string joint = 3;
+}
+
+message GetSpeedConfigResponse {
+  string reply = 1;
+  int32 code = 2;
+  string speed_config = 3;
+}
+
+message SaveSpeedConfigRequest {
+  repeated SpeedConfig data = 1;
+  string speed_type = 2;
+}
+
+message SaveSpeedConfigResponse {
+  string reply = 1;
+  int32 code = 2;
+}
+
+message RedifyControllerIPRequest {
+  string addresses = 1;
+  string gateway4 = 2;
+}
+
+message RedifyControllerIPResponse { int32 code = 1; }
+
+message GetServoEncodeRequest {}
+
+message GetServoEncodeResponse {
+  repeated int32 encode = 1;
+  int32 code = 2;
+}
+
+message UpdatePointFileRequest {
+  // bytes data = 1;
+  string data = 1;
+}
+
+message UpdatePointFileResponse { int32 code = 1; }
+
+service RobotGrpcService {
+  // 测试网络是否联通
+  rpc Ping(google.protobuf.Empty) returns (PingResponse);
+  // 机器人上电
+  rpc PowerOn(google.protobuf.Empty) returns (PowerOnResponse);
+  // 机器人下电
+  rpc PowerOff(google.protobuf.Empty) returns (PowerOffResponse);
+  // 机器人清错
+  rpc ClearError(google.protobuf.Empty) returns (ClearErrorResponse);
+  // 示教过程中，开启获得关节数据流
+  rpc TeachStreamStartGetJoints(google.protobuf.Empty)
+      returns (stream TeachStreamStartGetJointsResponse);
+  // 示教过程中，停止获得关节数据流
+  rpc TeachStreamStopGetJoints(google.protobuf.Empty)
+      returns (TeachStreamStopGetJointsResponse);
+
+
+  // 急停
+  rpc EmergencyStop(EmergencyStopRequest) returns (EmergencyStopResponse);
+  rpc EmergencyRecover(EmergencyRecoverRequest)
+      returns (EmergencyRecoverResponse);
+
+  // 示教相关接口
+  // 开始示教liqingfengzzu@163.com
+  // TODO(liqingfengzzu@163.com): 该接口临时废弃，未正常实现和测试
+  rpc TeachJogStart(TeachJogStartRequest) returns (TeachJogStartResponse);
+  // 结束示教
+  // TODO(liqingfengzzu@163.com): 该接口临时废弃，未正常实现和测试
+  rpc TeachJogStop(TeachJogStopRequest) returns (TeachJogStopResponse);
+
+  // 示教单独点动
+  rpc TeachMoveStep(TeachMoveStepRequest) returns (TeachMoveStepResponse);
+
+
+  rpc TeachSavePosition(TeachSavePositionRequest)
+      returns (TeachSavePositionResponse);
+  rpc TeachSetVelocity(TeachSetVelocityRequest)
+      returns (TeachSetVelocityResponse);
+  rpc TeachGetVelocity(TeachGetVelocityRequest)
+      returns (TeachGetVelocityResponse);
+  rpc TeachMove(TeachMoveRequest) returns (TeachMoveResponse);
+
+  // 配置管理
+  rpc RobotSetting(RobotSettingRequest) returns (RobotSettingResponse);
+  rpc SaveJointSetting(SaveJointSettingRequest)
+      returns (SaveJointSettingResponse);
+
+  // 数据管理
+  rpc DeletePoint(DeletePointRequest) returns (DeletePointResponse);
+  rpc GetAllPointNames(GetAllPointNamesRequest)
+      returns (GetAllPointNamesResponse);
+  rpc DownloadPointFile(DownloadPointFileRequest)
+      returns (stream DownloadPointFileResponse);
+  rpc GoTeachJoint(GoTeachJointRequest) returns (GoTeachJointResponse);
+
+  // 指令
+  rpc TeachInstruction(TeachInstructionRequest)
+      returns (TeachInstructionResponse);
+
+  // IO处理
+  rpc SetIOOutputState(SetIOOutputStateRequest)
+      returns (SetIOOutputStateResponse);
+  rpc GetIOOutputState(GetIOOutputStateRequest)
+      returns (GetIOOutputStateResponse);
+  rpc GetIOInputState(GetIOInputStateRequest)
+      returns (stream GetIOInputStateResponse);
+  rpc StopGetIOInputState(StopGetIOInputStateRequest)
+      returns (StopGetIOInputStateResponse);
+
+  // 异常处理
+  rpc GetStreamException(stream GetStreamExceptionRequest)
+      returns (stream GetStreamExceptionResponse);
+  rpc GetException(GetExceptionRequest) returns (GetExceptionResponse);
+
+  rpc DeleteException(DeleteExceptionRequest) returns (DeleteExceptionResponse);
+
+  // 伺服状态
+  rpc SlaveState(stream SlaveStateRequest) returns (stream SlaveStateResponse);
+
+  // Layout
+  rpc StartLayoutSimulation(StartLayoutSimulationRequest)
+      returns (StartLayoutSimulationResponse);
+  rpc GetLayoutRobotPositionStream(GetLayoutRobotPositionRequest)
+      returns (stream GetLayoutRobotPositionResponse);
+  rpc StopGetLayoutRobotPositionStream(StopGetLayoutRobotPositionRequest)
+      returns (StopGetLayoutRobotPositionResponse);
+
+  rpc GetSpeedConfig(GetSpeedConfigRequest) returns (GetSpeedConfigResponse);
+  rpc SaveSpeedConfig(SaveSpeedConfigRequest) returns (SaveSpeedConfigResponse);
+
+  // 单轴零点标定
+  rpc SingleAxisZeroCalibrate(SingleAxisZeroCalibrateRequest)
+      returns (SingleAxisZeroCalibrateResponse);
+
+  rpc RedifyControllerIP(RedifyControllerIPRequest)
+      returns (RedifyControllerIPResponse);
+
+  rpc GetServoEncode(GetServoEncodeRequest) returns (GetServoEncodeResponse);
+
+  rpc UpdatePointFile(stream UpdatePointFileRequest)
+      returns (stream UpdatePointFileResponse);
+}

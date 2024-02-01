@@ -1,0 +1,13 @@
+digraph g {
+  label=nxc100_state_machine
+  InitialState -> ReceiveMessage [ label = "上电,host绑定服务成功" ]
+  ReceiveMessage -> ResponseMessage [ label = "host发送指令" ]
+  ResponseMessage -> CompletionMessage [ label = "发送response指令" ]
+  ResponseMessage -> ResponseMessage [ label = "host重新发送指令" ]
+  ResponseMessage -> AckCompletionMessage [ label = "回复host重新发送的指令" ]
+  CompletionMessage -> AckCompletionMessage  [label = "指令完成事件" ]
+  CompletionMessage -> ResponseMessage  [label = "host重新发送指令" ]
+  AckCompletionMessage -> ReceiveMessage [ label = "host发送ack指令" ]
+  AckCompletionMessage -> ResponseMessage [ label = "host重新发送指令" ]
+  AckCompletionMessage -> OffState [ label = "下电事件" ]
+}

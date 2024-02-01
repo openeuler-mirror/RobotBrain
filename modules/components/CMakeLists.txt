@@ -1,0 +1,9 @@
+cmake_minimum_required (VERSION 3.22.1)
+
+add_subdirectory(ethercat_component)
+add_subdirectory(exception_component)
+add_subdirectory(robot_component)
+add_subdirectory(trajectory_component)
+add_subdirectory(grpc_service_component)
+add_subdirectory(robot_service_component)
+add_subdirectory(interlock_component)

@@ -1,0 +1,4 @@
+description: "总线相关的参数配置" # 该文件的用途描述。
+communication_cycle: 4000000 # 通信周期（单位为ns纳秒）
+emergency_deceleration_duration: 20  # 伺服急停加速时间（ms）
+reference_slave_clock: false # 使用从站时钟同步

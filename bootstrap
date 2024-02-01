@@ -1,0 +1,292 @@
+#!/bin/bash
+#用法提示
+usage() {
+    echo "===================================="
+    echo "Usage: provide some common compile tools"
+    echo "     ./bootstrap [make|test[-d]|clean|doc|serve|install|uninstall|[help|-h|--help]]"
+    echo "Description:"
+    echo "    make,           compile the whole project."
+    echo "    test,           test the whole project."
+    echo "       -d,            show more detail test info."
+    echo "    clean,          clean the compile result."
+    echo "    doc,            generate the document."
+    echo "    server|serve,   run the server program."
+    echo "    install,        install the related library."
+    echo "    uninstall,      uninstall the related library."
+    echo "    cp_config,      copy the config directory to the specified path."
+    echo "    clean_code,     remove all source code."
+    echo "    help|-h|--help, help."
+    echo "===================================="
+    exit -1
+}
+
+get_debug_or_release()
+{
+    # select debug or release
+    BUILD_TYPE=$(whiptail --title "Build Type" --menu "Choose your build type" 15 60 6 \
+    "1" "Debug (include debug info)" \
+    "2" "Release (for production)" 3>&1 1>&2 2>&3)
+    if [[ $? != 0 ]]; then
+        echo -e "\033[31mYou chose Cancel. You must choose one type.\033[0m"
+        exit 1
+    fi
+    if [ $BUILD_TYPE -eq 1 ]; then
+        BUILD_TYPE_CMAKE_DEFIN_STR=Debug
+        echo -e "\033[32mYou chose Debug.\033[0m"
+    elif [ $BUILD_TYPE -eq 2 ]; then
+        BUILD_TYPE_CMAKE_DEFIN_STR=Release
+        echo -e "\033[32mYou chose Release.\033[0m"
+    else
+        echo -e "\033[31mYou chose Cancel. You must choose one type.\033[0m"
+        exit 1
+    fi
+}
+
+get_robot_type()
+{
+    # select from list about the robot type, and complie with corresponding code.
+    ROBOT_TYPE=$(whiptail --title "Robot Type for Build" --menu "Choose your robot type" 15 60 6 \
+    "1" "Robot ZERO 6 Axis" \
+    "2" "Robot SCARA 4 Axis" \
+    "3" "Panasonic 2 slave for debug" \
+    "4" "Robot XB4S of ROKAE" 3>&1 1>&2 2>&3)
+    if [[ $? != 0 ]]; then
+        echo -e "\033[31mYou chose Cancel. You must choose one type.\033[0m"
+        exit 1
+    fi
+    if [ $ROBOT_TYPE -eq 1 ]; then
+        ROBOT_TYPE_CMAKE_DEFIN_STR=ZERO_6
+        # echo green color of type
+        echo -e "\033[32mYou chose Robot 6 Axis.\033[0m"
+    elif [ $ROBOT_TYPE -eq 2 ]; then
+        ROBOT_TYPE_CMAKE_DEFIN_STR=SCARA
+        echo -e "\033[32mYou chose Robot 4 Axis.\033[0m"
+    elif [ $ROBOT_TYPE -eq 3 ]; then
+        ROBOT_TYPE_CMAKE_DEFIN_STR=panasonic_2_slave
+        echo -e "\033[32mYou chose panasonic 2 slave for debug.\033[0m"
+    elif [ $ROBOT_TYPE -eq 4 ]; then
+        ROBOT_TYPE_CMAKE_DEFIN_STR=rokae_xb4s
+        echo -e "\033[32mYou chose Robot XB4S of ROKAE.\033[0m"
+    else
+        echo -e "\033[31mYou chose Cancel. You must choose one type.\033[0m"
+        exit 1
+    fi
+}
+
+# make 编译
+run_make()
+{
+    source /usr/local/etc/orocos/env.sh
+    core_num=$(more /proc/cpuinfo |grep "physical id"|uniq|wc -l)
+    mkdir -p out/build && cd out/build
+    get_robot_type
+    get_debug_or_release
+    echo -e "\033[32mStart to compile with cmake.\033[0m"
+    echo -e "\033[32mBuild type is $BUILD_TYPE_CMAKE_DEFIN_STR.\033[0m"
+    echo -e "\033[32mRobot type is $ROBOT_TYPE_CMAKE_DEFIN_STR.\033[0m"
+    # 假如是release，默认不对测试用例进行编译，加快编译速度
+    if [[ $BUILD_TYPE_CMAKE_DEFIN_STR == 'Release' ]]; then
+      echo '=================='
+      echo $BUILD_TYPE_CMAKE_DEFIN_STR
+      echo '=================='
+      cmake ../../ -DROSC_ROBOT_BRAIN_BUILD_TESTING=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$BUILD_TYPE_CMAKE_DEFIN_STR -DROSC_ROBOT_TYPE=$ROBOT_TYPE_CMAKE_DEFIN_STR -DCMAKE_INSTALL_PREFIX=./install
+    else
+      echo '=================='
+      echo $BUILD_TYPE_CMAKE_DEFIN_STR
+      echo '=================='
+      cmake ../../ -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$BUILD_TYPE_CMAKE_DEFIN_STR -DROSC_ROBOT_TYPE=$ROBOT_TYPE_CMAKE_DEFIN_STR -DCMAKE_INSTALL_PREFIX=./install
+    fi
+    # 根据经验，为加快编译速度，将编译线程数设设置为了cpu核心数的2倍
+    # make -j $[$core_num * 2]
+    make -j 4
+    cp -f compile_commands.json ../../
+    cd -
+}
+
+# 清理文件夹
+run_make_clean()
+{
+    rm -r out
+}
+
+# 生成文档
+run_make_doc() {
+    doxygen
+}
+
+# 跑测试用例
+run_make_test()
+{
+    source /usr/local/etc/orocos/env.sh
+    core_num=$(more /proc/cpuinfo |grep "physical id"|uniq|wc -l)
+    mkdir -p out/build && cd out/build
+    cmake -D ROSC_ROBOT_BRAIN_BUILD_TESTING=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ../../
+    #make -j $[$core_num * 2]
+    make -j 4
+    cp -f compile_commands.json ../../
+    # if [[ $1 == '-d' ]] ; then
+    #     # 可以用-VV，详细更加详细的信息
+    #     make test ARGS="-VV" GTEST_COLOR=1
+    # else
+    #     make test
+    # fi
+    cd -
+}
+
+# 跑运行处理的robot_server程序。
+run_robot_server()
+{
+  cd ./out/build/modules/robot_server/src/
+  ./robot_server
+  cd -
+}
+
+# 将配置文件拷贝到指定的目录
+run_robot_cp_config()
+{
+  # 对比配置文件，如果不一致，则拷贝
+  if [ ! -d /robot/config/ ]; then
+    cp -r ./data/test_data/robot/config/ /robot/
+  else
+    # chose colordiff or diff compare the directory
+    if [ ! -x "$(command -v colordiff)" ]; then
+      echo -e "\033[31mcolordiff is not installed, use diff instead.\033[0m"
+      echo -e "\033[31mif you want to use colordiff, please install it.\033[0m"
+      echo -e "\033[31mfor example: sudo apt install colordiff\033[0m"
+      echo "=============================="      
+      diff -r ./data/test_data/robot/config/ /robot/config/
+      echo "=============================="
+    else
+      echo "=============================="
+      colordiff -r ./data/test_data/robot/config/ /robot/config/
+      echo "=============================="
+    fi
+    if [ -n "$(diff -r ./data/test_data/robot/config/ /robot/config/)" ]; then
+      echo -e "\033[31mconfig file is different, need to copy.\033[0m"
+      # do you want to copy config file?
+      read -p "Do you want to copy config file? [y/n]" answer
+      if [ $answer == "y" ]; then
+        cp -r ./data/test_data/robot/config/ /robot/
+      else
+        echo "You chose not to copy config file."
+      fi
+    else
+      echo -e "\033[32mconfig file is same, no need to copy.\033[0m"
+    fi
+  fi
+}
+
+# 安装相关的库
+run_install()
+{
+  cd out/build
+  make install
+  cd -
+  ldconfig
+}
+
+# 卸载相关的库
+run_uninstall()
+{
+  cd out/build
+  make uninstall
+  cd -
+  ldconfig
+}
+
+# 清理所有的源代码
+run_clean_source_code()
+{
+  #echo "如果您在产品环境中应用，建议您使用并完善install功能，并将所有项目代码和编译内容删除，而不是clean_code功能。"
+  #echo "If you use it in the production environment, it is recommended that you use and improve the install function, and delete all project code and compilation content, instead of the clean_code function."
+  echo -e "\033[31mIf you use it in the production environment, it is recommended that you use and improve the install function, and delete all project code and compilation content, instead of the clean_code function.\033[0m"
+  #echo -e "\033[31m该功能仅提供临时的清除代码，避免代码泄漏。请您确实您没有要保留的代码。\033[0m"
+  echo -e "\033[31mThis function only provides temporary code cleaning to avoid code leakage. Please make sure you have no code to keep.\033[0m"
+  # 让用户确认是否要清理源代码
+  read -p "Do you want to clean all source code? [YES/n]" answer
+  if [ $answer == "YES" ]; then
+    rm -rf ./modules
+    rm -rf ./docs
+    rm -rf ./include
+    rm -rf ./tools/docker_env
+    rm -rf ./3rdparty
+    rm -rf ./.vscode
+    rm -rf ./.git
+    rm -rf ./CMakeLists.txt
+    rm -rf ./README.md
+    rm -rf ./install_dependents.sh
+    rm -rf ./cmake
+    rm -rf ./data/protos/
+    rm -rf ./.gitignore
+    rm -rf ./.gitlab-ci.yml
+    rm -rf ./compile_commands.json
+    rm -rf ./Doxyfile
+    rm -rf ./.clang-format
+    echo "All source code has been cleaned."
+  else
+    exit 0
+  fi
+}
+
+start_time=$(date +%s)
+# 脚本入口
+# make the bash script can auto complete, manual execute the following command
+# or add it to ~/.bashrc, or add it to ./envsetup.sh
+# complete -W "make test clean doc server cp_config install uninstall help -h --help" ./bootstrap
+# 假如没有带参数
+if [[ $# == 0 ]] ; then
+    run_make
+else
+    case "$1" in
+    clean)
+        run_make_clean
+        ;;
+    doc)
+        run_make_doc
+        ;;
+    test)
+        if [[ $2 == "-d" ]]; then 
+            run_make_test -d
+        else
+            run_make_test
+        fi
+        ;;
+    server)
+        run_robot_server
+        ;;
+    serve)
+        run_robot_server
+        ;;
+    cp_config)
+        run_robot_cp_config
+        ;;
+    install)
+        run_install
+        ;;
+    uninstall)
+        run_uninstall
+        ;;
+    help)
+        usage
+        ;;
+    -h)
+        usage
+        ;;
+    --help)
+        usage
+        ;;
+    make)
+        run_make
+        ;;
+    clean_code)
+        run_clean_source_code
+        ;;
+    *)
+        echo -e "\033[31mError: unknown command \"$1\".\033[0m"
+        usage
+        ;;
+    esac
+fi
+end_time=$(date +%s)
+cost_time=$[ $end_time-$start_time ]
+echo "The script takes $(($cost_time/60))min $(($cost_time%60))s"

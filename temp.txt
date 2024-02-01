@@ -1,0 +1,71 @@
+loadLibrary("/home/robot/projects/robot_brain_cpp/out/build/modules/components/ethercat_component/src/orocos/gnulinux/robot_brain_cpp/libethercat_component-gnulinux.so")
+reloadLibrary("/home/robot/projects/robot_brain_cpp/out/build/modules/components/ethercat_component/src/orocos/gnulinux/robot_brain_cpp/libethercat_component-gnulinux.so")
+import("robot_brain_cpp")
+loadComponent("ethercat", "EthercatComponent")
+
+unloadComponent("ethercat")
+displayComponentTypes()
+
+import("robot_brain_cpp")
+
+
+loadComponent("test", "TestCom")
+unloadComponent("test")
+
+
+
+loadComponent("robot", "RobotComponent")
+
+
+/usr/local/lib/orocos/gnulinux/robot_brain_cpp/libtest_com-gnulinux.so
+
+loadLibrary("/usr/local/lib/orocos/gnulinux/robot_brain_cpp/libethercat_component-gnulinux.so")
+reloadLibrary("/usr/local/lib/orocos/gnulinux/robot_brain_cpp/libethercat_component-gnulinux.so")
+reloadLibrary("/usr/local/lib/orocos/gnulinux/robot_brain_cpp/librobot_service_component-gnulinux.so")
+reloadLibrary("/usr/local/lib/orocos/gnulinux/robot_brain_cpp/librobot_component-gnulinux.so")
+
+
+import("robot_brain_cpp")
+
+
+loadLibrary("/usr/local/lib/orocos/gnulinux/robot_brain_cpp/libtest_com-gnulinux.so")
+loadLibrary("/usr/local/lib/orocos/gnulinux/robot_brain_cpp/libtest_com2-gnulinux.so")
+
+
+loadComponent("test","rosc::TestCom")
+unloadComponent("test")
+reloadLibrary("/usr/local/lib/orocos/gnulinux/robot_brain_cpp/libtest_com-gnulinux.so")
+
+
+reloadLibrary("/usr/local/lib/orocos/gnulinux/robot_brain_cpp/libtest_com2-gnulinux.so")
+
+
+
+reloadLibrary("/usr/local/lib/orocos/gnulinux/robot_brain_cpp/librobot_component-gnulinux.so")
+
+
+
+/usr/local/lib/orocos/gnulinux/robot_brain_cpp/librobot_component-gnulinux.so
+import("dou")
+loadComponent("dou", "Dou")
+unloadComponent("dou")
+
+
+
+reloadLibrary("/usr/local/lib/orocos/gnulinux/robot_brain_cpp/libdou-gnulinux.so")
+reloadLibrary("/usr/local/lib/orocos/gnulinux/robot_brain_cpp/librobot_service_component-gnulinux.so")
+reloadLibrary("/usr/local/lib/orocos/gnulinux/robot_brain_cpp/libgrpc_service_component-gnulinux.so")
+watch -n 0.1  "cat /proc/`ps -ef | grep 'deployer-gnulinux$' | awk '{print $2}'`/maps  | grep 'usr/local/lib/orocos/gnulinux/robot_brain_cpp'"
+watch -n 0.1  "cat /proc/`ps -ef | grep 'deployer-gnulinux$' | awk '{print $2}'`/maps  | grep 'delete'"
+
+
+readelf -Ws libconfig_tools.so | grep UNI
+
+# 调试常用命令
+make && make install && ldconfig && LD_DEBUG=all LD_DEBUG_OUTPUT=debuglog.txt deployer-gnulinux --log-level Debug
+watch -n 0.1  "cat /proc/`ps -ef | grep 'deployer-gnulinux' | grep -v grep | awk '{print $2}'`/maps  | grep robot"
+cd /usr/local/lib/orocos/gnulinux/robot_brain_cpp/
+cp *.so ../ && rm -rf *.so && cp ../*.so ./
+
+import("robot_brain_cpp")
+loadComponent("ethercat", "rosc::EthercatComponent")

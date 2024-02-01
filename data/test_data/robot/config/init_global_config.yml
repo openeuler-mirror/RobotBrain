@@ -1,0 +1,34 @@
+version: "1.0.0" # 版本号
+description: "初始全局配置" # 该文件的用途描述
+rpc_service: # 开启rpc服务
+  enabled: true # 是否开启rpc服务
+  port: 50051 # rpc服务端口
+license_path: "/robot/config/license.dat" # license文件路径
+exception_log_path: "/home/robot/exception.log"
+data:
+  root_path: "../../../../../../data/test_data/robot/"  # 点位文件路径
+  # root_path: "/robot/config/"
+  files_path:
+    points_file: "data/POINT_.yml"
+simulation: # 是否开启仿真
+  enabled: true
+robot_type: 0  # 0: zero-6 1: scara
+running_mode:
+  host_mode: true
+  switch_on_io: 1
+yaskawa_service: #安川nxc100、sr100解析服务
+  enabled: true
+  port: 10110
+  seqNo: 2
+  command_time_interval: 100 #接收指令时各字符的最大时间间隔（ms）（如果在接收数据时检测到字符之间
+                           #超时，整个消息的剩余部分（接收到的字符和之后的直到<CR>的字符）应忽略）
+  is_sr100: false #true代表使用sr100，否则使用nxc100
+  check_sum: 2 #指令的checkSum字段默认长度为2，为0时表示不对指令进行checkSum校验
+  # server_ip: 192.168.100.108
+  #server_ip: "192.168.101.128" #有bug需要验证
+  # Parameter for the completion message 
+  # Parameter for the acknowledgement for the completion message 
+  # Parameter for setting the maximum number of retries to inform the completion of execution 
+  # Parameter for setting the receiving time-out time to receive the acknowledgement message for 
+  # the completion of execution 
+  # Parameter for setting the time-out time between characters

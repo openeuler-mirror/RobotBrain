@@ -1,0 +1,10 @@
+digraph g {
+  label=state_machine
+  初始化 -> 空闲 [ label = "上电" ]
+  空闲 -> 运动 [ label = "move指令" ]
+  运动 -> 空闲 [ label = "运行结束" ]
+  空闲 -> 初始化 [label = "下电" ]
+  运动 -> 故障 [ label = "报错" ]
+  空闲 -> 故障 [ label = "报错" ]
+  故障 -> 初始化 [ label = "清错" ]
+}

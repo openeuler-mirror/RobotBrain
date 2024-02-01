@@ -1,0 +1,12 @@
+image: harbor.acbot.net/rosc/robot_brain_env:latest
+
+stages:
+  - check_style
+
+before_script:
+  - date
+
+check_style:
+  stage: check_style
+  script:
+    - cpplint --linelength=80 --recursive --exclude=3rdparty/ --exclude=out/ --exclude=modules/robot_server/include/robot_service.* --exclude=modules/components/grpc_service_component/include/robot_grpc_service.* --exclude=modules/robot_ctl/include/robot_grpc_service.* ./

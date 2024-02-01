@@ -1,0 +1,88 @@
+zero_device_config:
+  robot:
+    IO_slave_seq: 6
+    dof: 6        # 手臂自由度-关节数量
+    slave_num: 6  # 伺服数量
+    slave_type_list:   # (0: motor_slave) (1: io_slave) (2: di_slave) (3: do_slave)
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+    joints:
+      vel_max:
+        - 300
+        - 300
+        - 300
+        - 300
+        - 300
+        - 300
+      acc_max:
+        - 1500
+        - 1500
+        - 1500
+        - 1500
+        - 1500
+        - 1500
+      jerk:
+        - 7500
+        - 7500
+        - 7500
+        - 7500
+        - 7500
+        - 7500
+      dcc_max:
+        - 1500
+        - 1500
+        - 1500
+        - 1500
+        - 1500
+        - 1500
+      dcc_jerk:
+        - 7500
+        - 7500
+        - 7500
+        - 7500
+        - 7500
+        - 7500
+      MotionRangeStart:
+        - -360
+        - -360
+        - -360
+        - -360
+        - -360
+        - -360
+      MotionRangeEnd:
+        - 360
+        - 360
+        - 360
+        - 360
+        - 360
+        - 360
+      encoder:
+        - 524288
+        - 524288
+        - 524288
+        - 524288
+        - 524288
+        - 524288
+      ratio:
+        - 1
+        - 1
+        - 1
+        - 1
+        - 1
+        - 1
+      linear-motion:
+        vel_max: 1500
+        acc_max: 7000
+        jerk: 10000
+        dcc_max: 7000
+        dcc_jerk: 10000
+        jog_speed_max: 100
+    tool_length: 196.35
+    blade_length: 209.35    # 409.35
+
+    arm_length: 168
+  
