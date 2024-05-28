@@ -1,0 +1,17 @@
+# Generated from orogen/lib/orogen/templates/typekit/typekit.pc
+
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=${prefix}/lib/orocos@OROCOS_PKG_DIR@/types
+includedir=${prefix}/include/orocos
+
+project_name=robot_brain
+type_registry=${prefix}/share/orogen/robot_brain.tlb
+
+Name: robot_brainTypekit
+Version: 
+Requires: 
+Description: robot_brain types support for the Orocos type system
+Libs: -L${libdir} -l@libname@
+Cflags: -I${includedir} -I${includedir}/robot_brain/types  @PKG_CFLAGS@
+

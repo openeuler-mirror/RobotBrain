@@ -24,7 +24,7 @@
 #include <robot_brain/robot_exception.hpp>
 #include <boost/filesystem.hpp>
 #include <robot_brain/core.hpp>
-
+#include <fstream>
 namespace rosc {
 namespace fs = boost::filesystem;
 

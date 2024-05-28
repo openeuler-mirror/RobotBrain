@@ -14,12 +14,12 @@ find_package (glog 0.6.0 REQUIRED)
 find_package (Eigen3 3.3 REQUIRED NO_MODULE)
 message(STATUS "FIND Eigen3 " ${EIGEN3_INCLUDE_DIR})
 
-find_path(OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR NAMES orocos/robot_brain_cpp PATH_SUFFIXES include)
-if (NOT OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR)
-  message(FATAL_ERROR "Could not find orocos/robot_brain_cpp")
-endif()
-# OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR=${OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR}/orocos/robot_brain_cpp
-set(OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR ${OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR}/orocos/robot_brain_cpp)
+# find_path(OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR NAMES orocos/robot_brain_cpp PATH_SUFFIXES include)
+# if (NOT OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR)
+#   message(FATAL_ERROR "Could not find orocos/robot_brain_cpp")
+# endif()
+# # OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR=${OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR}/orocos/robot_brain_cpp
+# set(OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR ${OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR}/orocos/robot_brain_cpp)
 
 set(_PROTOBUF_LIBPROTOBUF protobuf)
 set(_REFLECTION grpc++_reflection)
@@ -29,11 +29,11 @@ aux_source_directory(./ TEST_DIR_SRCS)
 # file(GLOB DIR_SRCS "../src/*.cc" "../include/*.cc")
 # list(FILTER DIR_SRCS EXCLUDE REGEX ".*_main.cc$")
 
-add_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
+orocos_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
 add_test(NAME ${TEST_BINARY} COMMAND ${TEST_BINARY})
 
 target_include_directories(${TEST_BINARY} PUBLIC
-                           ${OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR}
+                          #  ${OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR}
                            ${PROJECT_SOURCE_DIR}/modules/core/include
                            ${PROJECT_SOURCE_DIR}/modules/components/ethercat_component/include
                            ${PROJECT_SOURCE_DIR}/modules/components/robot_component/include

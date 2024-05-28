@@ -1,0 +1,424 @@
+<?xml version='1.0'?>
+<typelib>
+  <numeric category='float' name='/double' size='8'>
+  <metadata key='orogen_include'/>
+  </numeric>
+  <numeric category='sint' name='/int16_t' size='2'>
+  <metadata key='cxxname'><![CDATA[::int16_t]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[boost/cstdint.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/usr/include/bits/stdint-intn.h:25]]></metadata>
+
+  </numeric>
+  <numeric category='sint' name='/int32_t' size='4'>
+  <metadata key='cxxname'><![CDATA[::int32_t]]></metadata>
+<metadata key='orogen_include'><![CDATA[boost/cstdint.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/usr/include/bits/stdint-intn.h:26]]></metadata>
+
+  </numeric>
+  <numeric category='sint' name='/int64_t' size='8'>
+  <metadata key='cxxname'><![CDATA[::int64_t]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[boost/cstdint.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/usr/include/bits/stdint-intn.h:27]]></metadata>
+
+  </numeric>
+  <numeric category='sint' name='/int8_t' size='1'>
+  <metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[boost/cstdint.hpp]]></metadata>
+
+  </numeric>
+  <numeric category='uint' name='/uint16_t' size='2'>
+  <metadata key='cxxname'><![CDATA[::uint16_t]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[boost/cstdint.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/usr/include/bits/stdint-uintn.h:25]]></metadata>
+
+  </numeric>
+  <numeric category='uint' name='/uint32_t' size='4'>
+  <metadata key='cxxname'><![CDATA[::uint32_t]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[boost/cstdint.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/usr/include/bits/stdint-uintn.h:26]]></metadata>
+
+  </numeric>
+  <numeric category='uint' name='/uint8_t' size='1'>
+  <metadata key='cxxname'><![CDATA[::uint8_t]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[boost/cstdint.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/usr/include/bits/stdint-uintn.h:24]]></metadata>
+
+  </numeric>
+  <compound name='/rosc/Arm_pos' size='24'>
+    <field name='Extension' offset='0' type='/double'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:35]]></metadata>
+
+    </field>
+    <field name='Rotation' offset='8' type='/double'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:36]]></metadata>
+
+    </field>
+    <field name='Z_axis' offset='16' type='/double'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:37]]></metadata>
+
+    </field>
+  <metadata key='cxxname'><![CDATA[::rosc::Arm_pos]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/command_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:34]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:38]]></metadata>
+
+  </compound>
+  <enum name='/rosc/AxisNum'>
+    <value symbol='Cartesian_X_L' value='7'/>
+    <value symbol='Cartesian_X_R' value='8'/>
+    <value symbol='Cartesian_Y_L' value='9'/>
+    <value symbol='Cartesian_Y_R' value='10'/>
+    <value symbol='Elevation' value='0'/>
+    <value symbol='Extension' value='4'/>
+    <value symbol='Extension_L' value='2'/>
+    <value symbol='Extension_R' value='3'/>
+    <value symbol='Flip_L' value='11'/>
+    <value symbol='Flip_R' value='12'/>
+    <value symbol='Rotation' value='1'/>
+    <value symbol='Wrist_L' value='5'/>
+    <value symbol='Wrist_R' value='6'/>
+  <metadata key='cxxname'><![CDATA[::rosc::AxisNum]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/command_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:107]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:93]]></metadata>
+
+  </enum>
+  <enum name='/rosc/CommandType'>
+    <value symbol='CLEAR' value='9'/>
+    <value symbol='EMERGENCY_RECOVER' value='11'/>
+    <value symbol='EMERGENCY_STOP' value='10'/>
+    <value symbol='FAULT' value='21'/>
+    <value symbol='IO_IN' value='2'/>
+    <value symbol='IO_OUT' value='3'/>
+    <value symbol='JOG_START' value='6'/>
+    <value symbol='JOG_STOP' value='8'/>
+    <value symbol='MHOM' value='19'/>
+    <value symbol='MOTION' value='0'/>
+    <value symbol='MOVEL' value='16'/>
+    <value symbol='MOVETO' value='14'/>
+    <value symbol='MOVETOCART' value='15'/>
+    <value symbol='MOVEZONE' value='13'/>
+    <value symbol='MOVE_STEP' value='1'/>
+    <value symbol='NOP' value='20'/>
+    <value symbol='POINT' value='12'/>
+    <value symbol='POINT_JOG_START' value='7'/>
+    <value symbol='POWER_OFF' value='5'/>
+    <value symbol='POWER_ON' value='4'/>
+    <value symbol='SSLV' value='18'/>
+    <value symbol='SSPD' value='17'/>
+  <metadata key='cxxname'><![CDATA[::rosc::CommandType]]></metadata>
+<metadata key='doc'><![CDATA[@brief 指令类型]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/command_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:51]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:74]]></metadata>
+
+  </enum>
+  <compound name='/rosc/DigitIOFrame' size='4'>
+    <field name='digit_io_out' offset='0' type='/uint32_t'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:77]]></metadata>
+
+    </field>
+  <metadata key='cxxname'><![CDATA[::rosc::DigitIOFrame]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/ethercat_frame_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:76]]></metadata>
+
+  </compound>
+  <compound name='/rosc/EthercatCtlFrame' size='68'>
+    <field name='operation_mode' offset='0' type='/uint8_t[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:86]]></metadata>
+
+    </field>
+    <field name='ctrl_word' offset='10' type='/uint16_t[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:87]]></metadata>
+
+    </field>
+    <field name='target_position' offset='28' type='/int32_t[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:88]]></metadata>
+
+    </field>
+    <field name='digit_io_out' offset='64' type='/uint32_t'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:89]]></metadata>
+
+    </field>
+  <metadata key='cxxname'><![CDATA[::rosc::EthercatCtlFrame]]></metadata>
+<metadata key='doc'><![CDATA[@brief ethercat控制帧]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/ethercat_frame_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:84]]></metadata>
+
+  </compound>
+  <enum name='/rosc/EthercatFrameSendStatus'>
+    <value symbol='BUSY' value='1'/>
+    <value symbol='IDLE' value='0'/>
+  <metadata key='cxxname'><![CDATA[::rosc::EthercatFrameSendStatus]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/ethercat_frame_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:34]]></metadata>
+
+  </enum>
+  <compound name='/rosc/EthercatStatusFrame' size='224'>
+    <field name='operation_mode' offset='0' type='/uint8_t[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:109]]></metadata>
+
+    </field>
+    <field name='ctrl_word' offset='10' type='/uint16_t[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:110]]></metadata>
+
+    </field>
+    <field name='target_position' offset='28' type='/int32_t[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:111]]></metadata>
+
+    </field>
+    <field name='status_word' offset='64' type='/uint16_t[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:112]]></metadata>
+
+    </field>
+    <field name='current_position' offset='84' type='/int32_t[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:113]]></metadata>
+
+    </field>
+    <field name='current_torque' offset='120' type='/int16_t[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:114]]></metadata>
+
+    </field>
+    <field name='last_position' offset='140' type='/int32_t[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:115]]></metadata>
+
+    </field>
+    <field name='error_code' offset='176' type='/uint16_t[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:116]]></metadata>
+
+    </field>
+    <field name='modes_operation_display' offset='194' type='/uint8_t[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:118]]></metadata>
+
+    </field>
+    <field name='digit_io_out' offset='204' type='/uint32_t'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:119]]></metadata>
+
+    </field>
+    <field name='digit_io_in' offset='208' type='/uint32_t'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:120]]></metadata>
+
+    </field>
+    <field name='ethercat_frame_send_status' offset='212' type='/uint8_t'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:121]]></metadata>
+
+    </field>
+    <field name='al_state' offset='216' type='/int32_t'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:122]]></metadata>
+
+    </field>
+    <field name='data_flag' offset='220' type='/int32_t'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:123]]></metadata>
+
+    </field>
+  <metadata key='cxxname'><![CDATA[::rosc::EthercatStatusFrame]]></metadata>
+<metadata key='doc'><![CDATA[@brief ethercat状态帧]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/ethercat_frame_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:107]]></metadata>
+
+  </compound>
+  <enum name='/rosc/ExecStatus'>
+    <value symbol='FAILED' value='1'/>
+    <value symbol='SUCCESS' value='0'/>
+    <value symbol='TIMEOUT' value='2'/>
+  <metadata key='cxxname'><![CDATA[::rosc::ExecStatus]]></metadata>
+<metadata key='doc'><![CDATA[@brief 指令执行的状态]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/command_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:246]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:252]]></metadata>
+
+  </enum>
+  <enum name='/rosc/MotionMode'>
+    <value symbol='CLEARERROR_FEEDBACK' value='13'/>
+    <value symbol='CLEARERROR_SEND' value='5'/>
+    <value symbol='COMPLETED_FEEDBACK' value='16'/>
+    <value symbol='FAILURE_FEEDBACK' value='17'/>
+    <value symbol='IO_FEEDBACK' value='15'/>
+    <value symbol='IO_SEND' value='8'/>
+    <value symbol='JOG_ANGLE' value='10'/>
+    <value symbol='MOVECIRCLE_SEND' value='1'/>
+    <value symbol='MOVEFINISH_SEND' value='6'/>
+    <value symbol='MOVELINE_SEND' value='2'/>
+    <value symbol='MOVE_SEND' value='0'/>
+    <value symbol='MOVING_FEEDBACK' value='9'/>
+    <value symbol='POWEROFF_FEEDBACK' value='12'/>
+    <value symbol='POWEROFF_SEND' value='4'/>
+    <value symbol='POWERON_FEEDBACK' value='11'/>
+    <value symbol='POWERON_SEND' value='3'/>
+    <value symbol='PlanFailed' value='18'/>
+    <value symbol='SAVEPOINT_FEEDBACK' value='14'/>
+    <value symbol='SAVEPOINT_SEND' value='7'/>
+  <metadata key='cxxname'><![CDATA[::rosc::MotionMode]]></metadata>
+<metadata key='doc'><![CDATA[运动模式]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/ethercat_frame_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:37]]></metadata>
+
+  </enum>
+  <enum name='/rosc/ServoState'>
+    <value symbol='EMCY' value='0'/>
+    <value symbol='ERROR' value='1'/>
+    <value symbol='OP' value='2'/>
+    <value symbol='READY' value='3'/>
+  <metadata key='cxxname'><![CDATA[::rosc::ServoState]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/ethercat_frame_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:61]]></metadata>
+
+  </enum>
+  <enum name='/rosc/TransferSpeedType'>
+    <value symbol='FIRST_TRANSFER_SPEED' value='0'/>
+    <value symbol='HOME_SPEED' value='3'/>
+    <value symbol='INCHING_SPEED' value='6'/>
+    <value symbol='JOG_SPEED' value='5'/>
+    <value symbol='LINEAR_MOTION_FIRST_SPEED' value='7'/>
+    <value symbol='LINEAR_MOTION_HOME_SPEED' value='10'/>
+    <value symbol='LINEAR_MOTION_INCHING_SPEED' value='12'/>
+    <value symbol='LINEAR_MOTION_JOG_SPEED' value='11'/>
+    <value symbol='LINEAR_MOTION_LOW_SPEED' value='9'/>
+    <value symbol='LINEAR_MOTION_SECOND_SPEED' value='8'/>
+    <value symbol='LOW_SPEED' value='2'/>
+    <value symbol='SECOND_TRANSFER_SPEED' value='1'/>
+    <value symbol='SPEED_IN_LOW_SPEED_AREA' value='4'/>
+  <metadata key='cxxname'><![CDATA[::rosc::TransferSpeedType]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/command_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:76]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:90]]></metadata>
+
+  </enum>
+  <alias name='/rosc/ctrl_word_t' source='/uint16_t'/>
+  <alias name='/rosc/driver_position_t' source='/int32_t'/>
+  <alias name='/rosc/error_code_t' source='/uint16_t'/>
+  <alias name='/rosc/ethercat_frame_send_status_t' source='/uint8_t'/>
+  <alias name='/rosc/modes_operation_display_t' source='/uint8_t'/>
+  <alias name='/rosc/operation_mode_t' source='/uint8_t'/>
+  <alias name='/rosc/status_word_t' source='/uint16_t'/>
+  <alias name='/rosc/torque_t' source='/int16_t'/>
+  <alias name='/rosc/velocity_t' source='/int32_t'/>
+  <compound name='/rosc/EncoderFrame' size='352'>
+    <field name='target_position' offset='0' type='/double[9]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:64]]></metadata>
+
+    </field>
+    <field name='current_position' offset='72' type='/double[6]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:65]]></metadata>
+
+    </field>
+    <field name='mesg' offset='120' type='/int8_t[100]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:66]]></metadata>
+
+    </field>
+    <field name='point_name' offset='220' type='/int8_t[100]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:67]]></metadata>
+
+    </field>
+    <field name='time_stamp' offset='320' type='/int64_t'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:68]]></metadata>
+
+    </field>
+    <field name='al_state' offset='328' type='/int32_t'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:69]]></metadata>
+
+    </field>
+    <field name='digit_io_in' offset='332' type='/uint32_t'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:70]]></metadata>
+
+    </field>
+    <field name='status' offset='336' type='/uint8_t'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:71]]></metadata>
+
+    </field>
+    <field name='servo_state' offset='340' type='/rosc/ServoState'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:72]]></metadata>
+
+    </field>
+    <field name='mode' offset='344' type='/rosc/MotionMode'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:73]]></metadata>
+
+    </field>
+  <metadata key='cxxname'><![CDATA[::rosc::EncoderFrame]]></metadata>
+<metadata key='doc'><![CDATA[上层组件下发数据格式]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/ethercat_frame_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/ethercat_frame_types.hpp:63]]></metadata>
+
+  </compound>
+  <container kind='/std/string' name='/std/string' of='/int8_t' size='32'>
+  <metadata key='cxxname'><![CDATA[::std::string]]></metadata>
+<metadata key='orogen_include'><![CDATA[:boost/cstdint.hpp]]></metadata>
+<metadata key='orogen_include'><![CDATA[:string]]></metadata>
+
+  </container>
+  <container kind='/std/vector' name='/std/vector&lt;/std/string&gt;' of='/std/string' size='24'>
+  <metadata key='cxxname'><![CDATA[::std::vector<std::basic_string<char> >]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[:boost/cstdint.hpp]]></metadata>
+<metadata key='orogen_include'><![CDATA[:string]]></metadata>
+<metadata key='orogen_include'><![CDATA[:vector]]></metadata>
+<metadata key='source_file_line'><![CDATA[/include/c++/12/bits/stl_vector.h:423]]></metadata>
+
+  </container>
+  <compound name='/rosc/CommandExecResult' size='48'>
+    <field name='status' offset='0' type='/rosc/ExecStatus'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:259]]></metadata>
+
+    </field>
+    <field name='tp' offset='4' type='/rosc/CommandType'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:260]]></metadata>
+
+    </field>
+    <field name='timestamp' offset='8' type='/int64_t'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:261]]></metadata>
+
+    </field>
+    <field name='responseParams' offset='16' type='/std/vector&lt;/std/string&gt;'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:262]]></metadata>
+
+    </field>
+    <field name='errcode' offset='40' type='/int8_t[4]'>
+    <metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:263]]></metadata>
+
+    </field>
+  <metadata key='cxxname'><![CDATA[::rosc::CommandExecResult]]></metadata>
+<metadata key='doc'><![CDATA[@brief 指令执行的结果状态及内容]]></metadata>
+<metadata key='orogen_defining_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_exporting_typekits'><![CDATA[robot_brain]]></metadata>
+<metadata key='orogen_include'><![CDATA[robot_brain:robot_brain/command_types.hpp]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:258]]></metadata>
+<metadata key='source_file_line'><![CDATA[/home/openeuler/robots/RobotBrain/include/robot_brain/command_types.hpp:265]]></metadata>
+
+  </compound>
+</typelib>

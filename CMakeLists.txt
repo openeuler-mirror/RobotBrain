@@ -111,13 +111,26 @@ include( ${OROCOS-RTT_USE_FILE_PATH}/UseOROCOS-RTT.cmake )
 include_directories(${PROJECT_SOURCE_DIR}/include)
 # set(ENV{CPLUS_INCLUDE_PATH} ${PROJECT_SOURCE_DIR}/modules/config_tools/include/)
 # include_directories(${PROJECT_SOURCE_DIR}/modules/config_tools/include/)
-orocos_typegen_headers(${PROJECT_SOURCE_DIR}/include/robot_brain/ethercat_frame_types.hpp
-                      ${PROJECT_SOURCE_DIR}/include/robot_brain/command_types.hpp
-                      ) # ...you may add multiple header files
+# orocos_typegen_headers(${PROJECT_SOURCE_DIR}/include/robot_brain/ethercat_frame_types.hpp
+#                       ${PROJECT_SOURCE_DIR}/include/robot_brain/command_types.hpp
+#                       ) # ...you may add multiple header files
+
+find_package (Eigen3 3.3 REQUIRED NO_MODULE)
+message(STATUS "FIND Eigen3 " ${EIGEN3_INCLUDE_DIR})
+include_directories(${EIGEN3_INCLUDE_DIR})
+
+find_package(gRPC CONFIG REQUIRED)
+message(STATUS "Using gRPC ${gRPC_VERSION}")
+
+include_directories(${OROCOS_INSTALL_PREFIX}/include/orocos)
+message(STATUS "OROCOS_INSTALL_PREFIX: ${OROCOS_INSTALL_PREFIX}")
+
 
 install(DIRECTORY include/robot_brain
   DESTINATION include
 )
+
+add_subdirectory(typekit)
 
 # 添加源码模块所在位置
 add_subdirectory(modules)

@@ -7,7 +7,7 @@ set(TEST_BINARY ${MODULE_NAME}_unittest)
 
 
 aux_source_directory(./ TEST_DIR_SRCS)
-add_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
+orocos_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
 add_test(NAME ${TEST_BINARY} COMMAND ${TEST_BINARY})
 
-target_link_libraries(${TEST_BINARY} PUBLIC ${MODULE_NAME} gtest glog::glog)
+target_link_libraries(${TEST_BINARY} ${MODULE_NAME} gtest glog::glog)

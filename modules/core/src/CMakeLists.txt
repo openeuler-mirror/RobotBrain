@@ -3,9 +3,6 @@ aux_source_directory(./ DIR_SRCS)
 
 find_package (glog 0.6.0 REQUIRED)
 find_package(Threads REQUIRED)
-find_package(SWIG 1.1)
-find_package(Lua51 REQUIRED)
-include(${SWIG_USE_FILE})
 
 # Use 'source orocos_toolchain/env.sh' if the command below fails:
 find_package(OROCOS-RTT QUIET)
@@ -27,15 +24,7 @@ include( ${OROCOS-RTT_USE_FILE_PATH}/UseOROCOS-RTT.cmake )
 #                       # ...you may add multiple header files
 
 
-if (${SWIG_FOUND})
-  set_property(SOURCE application.i PROPERTY CPLUSPLUS ON)
-  SWIG_ADD_LIBRARY(${MODULE_NAME} TYPE SHARED LANGUAGE lua SOURCES application.i ${DIR_SRCS})
-  # 去掉生成so的lib前缀，保证生成的so名称为example.so，与lua脚本文件保持一致
-  # set_target_properties(${MODULE_NAME} PROPERTIES PREFIX "")
-  target_include_directories(${MODULE_NAME} PUBLIC ${LUA_INCLUDE_DIR})
-else() 
-  message(FATAL_ERROR "Can not found swig")
-endif()
+add_library(${MODULE_NAME} SHARED ${DIR_SRCS})
 # ADD_LIBRARY(${MODULE_NAME} SHARED ${DIR_SRCS})
 target_link_options(${MODULE_NAME} PRIVATE LINKER:-Bsymbolic)
 

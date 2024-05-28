@@ -17,8 +17,9 @@ find_package (glog 0.6.0 REQUIRED)
 find_package(Threads REQUIRED)
 find_package (Eigen3 3.3 REQUIRED NO_MODULE)
 message(STATUS "FIND Eigen3 " ${EIGEN3_INCLUDE_DIR})
-find_package(protobuf CONFIG REQUIRED)
-message(STATUS "Using protobuf ${protobuf_VERSION}")
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(Protobuf REQUIRED protobuf)
+# message(STATUS "Using protobuf ${protobuf_VERSION}")
 
 # gRPC
 find_package(absl REQUIRED)
@@ -31,17 +32,17 @@ set(_PROTOBUF_LIBPROTOBUF protobuf)
 set(_REFLECTION grpc++_reflection)
 
 
-if(CMAKE_CROSSCOMPILING)
+# if(CMAKE_CROSSCOMPILING)
   find_program(_PROTOBUF_PROTOC protoc)
-else()
-  set(_PROTOBUF_PROTOC $<TARGET_FILE:protobuf::protoc>)
-endif()
+# else()
+#   set(_PROTOBUF_PROTOC $<TARGET_FILE:protobuf::protoc>)
+# endif()
 set(_GRPC_GRPCPP grpc++)
-if(CMAKE_CROSSCOMPILING)
+# if(CMAKE_CROSSCOMPILING)
   find_program(_GRPC_CPP_PLUGIN_EXECUTABLE grpc_cpp_plugin)
-else()
-  set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
-endif()
+# else()
+#   set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>
+# endif()
 
 MESSAGE(STATUS "GRPC PLUGIN:" ${_GRPC_CPP_PLUGIN_EXECUTABLE})
 
@@ -87,6 +88,7 @@ target_include_directories(${MODULE_NAME} PUBLIC
                            ${PROJECT_SOURCE_DIR}/3rdparty/include
                            ${PROJECT_SOURCE_DIR}/modules/core/include
                            ${PROJECT_SOURCE_DIR}/modules/components/robot_service_component/include
+
                           )
 target_link_libraries(${MODULE_NAME} yaml-cpp)
 target_link_libraries(${MODULE_NAME} robot_exception)
