@@ -15,7 +15,7 @@ endif()
 include( ${OROCOS-RTT_USE_FILE_PATH}/UseOROCOS-RTT.cmake )
 
 aux_source_directory(./ TEST_DIR_SRCS)
-add_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
+orocos_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
 # target_link_libraries(${TEST_BINARY} PRIVATE ${MODULE_NAME})
 add_test(NAME ${TEST_BINARY} COMMAND ${TEST_BINARY})
 

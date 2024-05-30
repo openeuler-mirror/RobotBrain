@@ -7,11 +7,11 @@ include_directories("../include")
 set(TEST_BINARY ${MODULE_NAME}_unittest)
 
 aux_source_directory(./ TEST_DIR_SRCS)
-add_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
-target_link_libraries(${TEST_BINARY} PRIVATE ${MODULE_NAME})
+orocos_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
+target_link_libraries(${TEST_BINARY} ${MODULE_NAME})
 add_test(NAME ${TEST_BINARY} COMMAND ${TEST_BINARY})
 
-target_link_libraries(${TEST_BINARY} PRIVATE ${MODULE_NAME} gtest yaml-cpp)
-target_link_libraries(${TEST_BINARY} PRIVATE glog::glog)
-target_link_libraries(${TEST_BINARY} PRIVATE Eigen3::Eigen)
+target_link_libraries(${TEST_BINARY} ${MODULE_NAME} gtest yaml-cpp)
+target_link_libraries(${TEST_BINARY} glog::glog)
+target_link_libraries(${TEST_BINARY} Eigen3::Eigen)
 

@@ -22,12 +22,12 @@ if(NOT TARGET Boost::filesystem)
         INTERFACE_LINK_LIBRARIES ${Boost_LIBRARIES})
 endif()
 
-add_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
+orocos_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
 add_test(NAME ${TEST_BINARY} COMMAND ${TEST_BINARY})
 
-target_link_libraries(${TEST_BINARY} PRIVATE yaml-cpp)
-target_link_libraries(${TEST_BINARY} PRIVATE glog::glog)
-target_link_libraries(${TEST_BINARY} PRIVATE ${MODULE_NAME} gtest)
-target_link_libraries(${TEST_BINARY} PRIVATE Eigen3::Eigen)
-target_link_libraries(${TEST_BINARY} PRIVATE Boost::filesystem)
+target_link_libraries(${TEST_BINARY} yaml-cpp)
+target_link_libraries(${TEST_BINARY} glog::glog)
+target_link_libraries(${TEST_BINARY} ${MODULE_NAME} gtest)
+target_link_libraries(${TEST_BINARY} Eigen3::Eigen)
+target_link_libraries(${TEST_BINARY} Boost::filesystem)
 

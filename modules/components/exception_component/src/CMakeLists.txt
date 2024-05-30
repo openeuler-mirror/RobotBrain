@@ -14,7 +14,7 @@ find_package (glog 0.6.0 REQUIRED)
 find_package (Threads REQUIRED)
 find_package (Eigen3 3.3 REQUIRED NO_MODULE)
 message(STATUS "FIND Eigen3 " ${EIGEN3_INCLUDE_DIR})
-find_package(protobuf CONFIG REQUIRED)
+# find_package(protobuf CONFIG REQUIRED)
 message(STATUS "Using protobuf ${protobuf_VERSION}")
 
 orocos_component(${MODULE_NAME} ${DIR_SRCS})
@@ -38,7 +38,7 @@ target_link_libraries(${MODULE_NAME} core)
 target_link_libraries(${MODULE_NAME} glog::glog)
 target_link_libraries(${MODULE_NAME} yaml-cpp)
 target_link_libraries(${MODULE_NAME} Eigen3::Eigen)
-target_link_libraries(${MODULE_NAME} ${_REFLECTION} ${_GRPC_GRPCPP} ${_PROTOBUF_LIBPROTOBUF})
+# target_link_libraries(${MODULE_NAME} ${_REFLECTION} ${_GRPC_GRPCPP} ${_PROTOBUF_LIBPROTOBUF})
 
 # You may add multiple orocos_component statements.
 #

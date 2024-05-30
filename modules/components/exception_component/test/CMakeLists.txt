@@ -12,10 +12,6 @@ if (NOT OROCOS-RTT_FOUND)
   message (FATAL_ERROR "\nCould not find Orocos. Please use the shell command\n 'source orocos_toolchain/env.sh' and then run cmake again.")
 endif()
 
-set(_PROTOBUF_LIBPROTOBUF protobuf)
-set(_REFLECTION grpc++_reflection)
-set(_GRPC_GRPCPP grpc++)
-
 # Defines the orocos_* cmake macros. See that file for additional
 # documentation.
 
@@ -23,7 +19,7 @@ include( ${OROCOS-RTT_USE_FILE_PATH}/UseOROCOS-RTT.cmake )
 
 aux_source_directory(./ TEST_DIR_SRCS)
 
-add_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
+orocos_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
 add_test(NAME ${TEST_BINARY} COMMAND ${TEST_BINARY})
 
 target_link_libraries(${TEST_BINARY} gtest)

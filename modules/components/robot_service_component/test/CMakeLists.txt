@@ -7,18 +7,18 @@ find_package (Eigen3 3.3 REQUIRED NO_MODULE)
 
 aux_source_directory(./ TEST_DIR_SRCS)
 
-add_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
+orocos_executable(${TEST_BINARY} ${TEST_DIR_SRCS})
 add_test(NAME ${TEST_BINARY} COMMAND ${TEST_BINARY})
 
-find_path(OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR NAMES orocos/robot_brain_cpp PATH_SUFFIXES include)
-if (NOT OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR)
-  message(FATAL_ERROR "Could not find orocos/robot_brain_cpp")
-endif()
-set(OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR ${OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR}/orocos/robot_brain_cpp)
+# find_path(OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR NAMES orocos/robot_brain_cpp PATH_SUFFIXES include)
+# if (NOT OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR)
+#   message(FATAL_ERROR "Could not find orocos/robot_brain_cpp")
+# endif()
+# set(OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR ${OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR}/orocos/robot_brain_cpp)
 
 target_include_directories(${TEST_BINARY} PUBLIC
                           ${PROJECT_SOURCE_DIR}/modules/core/include
-                          ${OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR}
+                          # ${OROCOS_ROBOT_BRAIN_CPP_INCLUDE_DIR}
                           ${PROJECT_SOURCE_DIR}/modules/components/ethercat_component/include
                           ${PROJECT_SOURCE_DIR}/modules/components/robot_component/include
                           ${PROJECT_SOURCE_DIR}/modules/components/robot_service_component/include
@@ -41,6 +41,6 @@ target_link_libraries(${TEST_BINARY} interlock_component)
 # target_link_libraries(${TEST_BINARY} /home/robot/projects/robot_brain_cpp/out/build/typekit/transports/typelib/librobot_brain_cpp-transport-typelib-gnulinux.so)
 # target_link_libraries(${TEST_BINARY} /home/robot/projects/robot_brain_cpp/out/build/typekit/transports/corba/librobot_brain_cpp-transport-corba-gnulinux.so)
 # TARGET_LINK_LIBRARIES(${TEST_BINARY} orocos-rtt-${OROCOS_TARGET})
-target_link_libraries(${TEST_BINARY} orocos-rtt-mqueue-${OROCOS_TARGET})
+# target_link_libraries(${TEST_BINARY} orocos-rtt-mqueue-${OROCOS_TARGET})
 target_link_libraries(${TEST_BINARY} glog::glog gtest)
 target_link_libraries(${TEST_BINARY} Eigen3::Eigen)
