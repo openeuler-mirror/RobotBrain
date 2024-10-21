@@ -6,17 +6,15 @@ Robot system control library, runtime services.
 #### Software Architecture
 Software architecture description
 
-#### Installation
+#### Compile tutorial
+```
+./bootstrap
+```
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Instructions
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### Running tutorial
+```
+./bootstrap server
+```
 
 #### Contribution
 
