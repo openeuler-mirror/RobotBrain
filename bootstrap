@@ -137,7 +137,7 @@ run_make_test()
 run_robot_server()
 {
   cd ./out/build/modules/robot_server/src/
-  ./robot_server
+  ./robot_server-gnulinux
   cd -
 }
 

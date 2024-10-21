@@ -11,20 +11,13 @@
 #ifndef ROBOT_BRAIN_COMMAND_TYPES_HPP_
 #define ROBOT_BRAIN_COMMAND_TYPES_HPP_
 
-#include "robot_brain/config.h"
-#include "robot_brain/ethercat_frame_types.hpp"
+#include <robot_brain/config.h>
 #include <bits/stdint-intn.h>
 #include <bits/stdint-uintn.h>
-#include <cmath>
-#include <cstdio>
-#include <cstring>
-#include <kdl/frames.hpp>
-#include <kdl/jntarray.hpp>
-#include <math.h>
-#include <ostream>
 #include <string>
 #include <vector>
-
+#include <kdl/frames.hpp>
+#include <kdl/jntarray.hpp>
 namespace rosc {
 
 #define COMMANDLIST_MAXLEN 30
